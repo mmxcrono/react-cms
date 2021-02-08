@@ -33,32 +33,11 @@ const App: React.FC = () => {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/Reports">Reports</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-              <li>
-                <Link to="/settings">Settings</Link>
-              </li>
             </ul>
           </nav>
 
           <main className="main-content">
             <Switch>
-              <Route path="/reports">
-                <Reports />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/users">
-                <Users />
-              </Route>
-              <Route path="/settings">
-                <Settings />
-              </Route>
               <Route path="/">
                 <Home />
               </Route>
@@ -86,8 +65,8 @@ const Settings: React.FC = () => {
   return <h2>Settings</h2>;
 };
 
-const Reports: React.FC = () => {
-  return <h2>Reports</h2>;
+const Logout: React.FC = () => {
+  return <h2>Logout</h2>;
 };
 
 const Users: React.FC = () => {
