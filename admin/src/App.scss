@@ -1,0 +1,93 @@
+// App
+@import './mixins';
+@import './variables';
+
+.App {
+  height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.alerts {
+  li {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .icon {
+      display: block;
+      max-width: 1rem;
+      cursor: pointer;
+    }
+  }
+}
+
+// This won't count towards grid if it isn't displayed
+.sidebar {
+  display: none;
+  border-right: 3pt solid #333;
+
+  .logo {
+    @include centered-content;
+  }
+
+  li {
+    text-align: center;
+
+    a {
+      margin: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1pt solid white;
+      border-radius: 10pt;
+      background: none;
+      color: white;
+
+      &:hover {
+        color: $highlight-color;
+        border-color: $highlight-color;
+      }
+    }
+  }
+}
+
+.footer-nav {
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      margin: 1rem;
+    }
+  }
+}
+
+.alerts {
+  background: #611;
+  color: white;
+  padding: 1rem;
+}
+
+// Media Queries
+@media (min-width: 500px) {
+  .wrapper {
+    @include cms-with-header(240px, 25%);
+    height: 100%;
+
+    .sidebar {
+      display: block;
+    }
+
+    .footer-nav {
+      display: none;
+    }
+  }
+}

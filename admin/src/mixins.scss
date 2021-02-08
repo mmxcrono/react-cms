@@ -1,0 +1,112 @@
+/*
+
+Extending classes vs using mixins
+
+https://sass-lang.com/documentation/at-rules/extend
+
+Most web servers compress the CSS they serve using an algorithm that’s very good
+at handling repeated chunks of identical text. This means that, although mixins
+may produce more CSS than extends, they probably won’t substantially increase the
+amount your users need to download. So choose the feature that makes the most sense
+for your use-case, not the one that generates the least CSS!
+
+*/
+
+// Element style
+@mixin clamp-width($min: 1ch, $actual: 50%, $max: 46ch) {
+  width: clamp($min, $actual, $max);
+}
+
+@mixin clamp-height($min: 1ch, $actual: 50%, $max: 46ch) {
+  height: clamp($min, $actual, $max);
+}
+
+// Within a column or cell
+// Centered
+@mixin centered-content() {
+  display: grid;
+  place-items: center;
+}
+
+// Wrapping
+@mixin flex-wrapped($maxWidth: 150px, $grow: 1) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .flex-wrapped-item {
+    /*  Stretching: */
+    flex: $grow 1 $maxWidth;
+
+    /*  No stretching: */
+    // flex: 0 1 150px;
+
+    margin: 5px;
+  }
+}
+
+// Grid Site Templates
+// CMS Side and content
+@mixin cms($sidebarMinWidth: 150px, $sidebarMaxWidth: 25%) {
+  display: grid;
+  grid-template-columns: minmax($sidebarMinWidth, $sidebarMaxWidth) 1fr;
+}
+
+@mixin cms-with-header($sidebarMinWidth: 150px, $sidebarMaxWidth: 25%) {
+  display: grid;
+  grid-template: auto 1fr / minmax($sidebarMinWidth, $sidebarMaxWidth) 1fr;
+
+  .header {
+    grid-column: 1 / 3;
+  }
+
+  .sidebar {
+    grid-column: 1 / 2;
+  }
+
+  .main-content {
+    grid-column: 2 / 3;
+  }
+}
+
+// Classic pancakestack with header, flex, and footer
+@mixin mobile-common() {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+// RAM - a better way to show grid of items
+@mixin auto-grid-items($min: 150px, $auto: auto-fill) {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat($auto, minmax(150px, 1fr));
+}
+
+@mixin color-backgrounds($offset: 0) {
+  > * {
+    border: 1px dashed rgba(100, 100, 100, 0.2);
+  }
+  > :nth-child(1) {
+    background: #fdd;
+  }
+
+  > :nth-child(2) {
+    background: #dfd;
+  }
+
+  > :nth-child(3) {
+    background: #ddf;
+  }
+
+  > :nth-child(4) {
+    background: #c99;
+  }
+
+  > :nth-child(5) {
+    background: #9c9;
+  }
+
+  > :nth-child(6) {
+    background: #99c;
+  }
+}

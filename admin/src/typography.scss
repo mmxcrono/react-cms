@@ -1,0 +1,35 @@
+// Typography
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.header-margin {
+  margin: 0.5rem;
+}
+
+h1 {
+  @extend .header-margin;
+  font-size: 1.6rem;
+}
+h2 {
+  @extend .header-margin;
+  font-size: 1.5rem;
+}
+h3 {
+  @extend .header-margin;
+  font-size: 1.4rem;
+}
+h4 {
+  @extend .header-margin;
+  font-size: 1.3rem;
+}
+h5 {
+  @extend .header-margin;
+  font-size: 1.2rem;
+}
+h6 {
+  @extend .header-margin;
+  font-size: 1.1rem;
+}
